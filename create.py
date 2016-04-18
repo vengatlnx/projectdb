@@ -48,7 +48,7 @@ class ProjectBuilder:
     def create_repo(self):
         if (self._check_repo_exist()):
             try:
-                with open("projects/" + self.proj, "r") as data_file:
+                with open(self.proj, "r") as data_file:
                     data = yaml.safe_load(data_file)
                     url = URL + "/user/repos"
                     res = self.session.post(url, data=json.dumps(data), headers=self.headers)
