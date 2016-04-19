@@ -1,5 +1,0 @@
-name : HelloWorld
-description : This is your first repository.
-auto-init : true
-gitignore_template : Python
-license_template : mit
