@@ -1,10 +1,8 @@
 language: python
 python: "2.7"
-sudo: required
-before_install:
-  - sudo apt-get update -q
-  - sudo apt-get install -y git
 install: "pip install -r requirements.txt"
-before_script: 
-  - if [ -n "$GH_TOKEN" ]; then git config github-oauth.github.com ${GH_TOKEN}; fi;
 script: "./run.sh"
+env:
+  global:
+    secure: aUbqaq9Torej7WYmPWAHw7spE0SaNMENPkk8cPE2dDlZbACoc1LowGi6bhkiIR0+u2eqEQf7/KnmjjlG04ZqI4AY0Gi2L1z6YW4MYd0BltFKdfygCJ1g3Ea9mFso9R4eXePKQjPPXbQNgzm2k4pN6uoh+W/z/qPdm7Dzto6h5Gb7IBBD8s/0O1NXysunUagN6qakXDxOm6uMI14ERzexp6hjI8n9HJzZ6c4PyVB0DTLjExVSybU9PnKZIq4v1kn168V4KzHJJIcqr7z+Zd6mEuB1vlLRHRSp7Yn/J7ioqBLcVDYr78z8qXShjtgXymZ2siVJdnz6LEn/7qTV1tO6Rjn+slXWDaCHw1atWH08KcoEavYF+zzGu+sqBt+YEkl7WHBfNhcZgWA8fWN6Th3Cx1hT49O1veMkK16o8+JZBXXzYW9r+6YA+M4BTfnnJiBbNO4YYUE1XyKoLx3Hual3uyQRmqpgGal0y3LmbMoGDyPgO9ZzJI80effie4iq+GvxWNfgIXRj6Kb7QolsmS1PlOzJNYHbmtsC2nPc9+FAdMwzwkDleITEBlCG+Y/CNjG2EcFsefjfqn8JJI/50Lo32ipqxzTWxuZJ7IJoCULxGDfMLg4cp4fpBt8gqZhrSybW3ZJGlUp847fzspWqBiEYPTgNDrlXAmhPVLvj7Lc9lHg=
+

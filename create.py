@@ -13,8 +13,10 @@ import requests
 import json
 import yaml
 from docopt import docopt
+import os
 
 URL = "https://api.github.com"
+token = os.getenv('GH_TOKEN', None)
 
 class ProjectBuilder:
     def __init__(self, proj, owner):
@@ -22,27 +24,17 @@ class ProjectBuilder:
         self.proj = proj
         self.owner = owner
 
-    def auth(self):
-        try:
-            with open("tokenfile", "r") as token_file:
-                token = token_file.readlines()[0]
-                self.headers = {'Authorization':'token %s' % token}
-              
-        except IOError:
-            print "Generate token for authentication"
-
     def _get_repos(self):
         url = URL + "/users/"+ self.owner +"/repos"
         repos = json.loads(self.session.get(url).text)
         repo_list = []
         for repo in repos:
-            repo_list.append(repo["full_name"].split("/")[1].encode("utf-8"))
+            repo_list.append(repo["full_name"].encode("utf-8"))
 
         return repo_list
 
     def _check_repo_exist(self):
-        proj = self.proj.split(".")[0]
-        if (proj not in self._get_repos()):
+        if (self.proj not in self._get_repos()):
             return True
         
     def create_repo(self):
@@ -51,7 +43,7 @@ class ProjectBuilder:
                 with open(self.proj, "r") as data_file:
                     data = yaml.safe_load(data_file)
                     url = URL + "/user/repos"
-                    res = self.session.post(url, data=json.dumps(data), headers=self.headers)
+                    res = self.session.post(url, data=json.dumps(data), headers={'Authorization':'token %s' % token})
                     if res.status_code == 201 :
                         print "Repository Created Successfully"
                     else:
@@ -64,7 +56,6 @@ class ProjectBuilder:
 
 def main(proj, owner):
     pb = ProjectBuilder(proj, owner)
-    pb.auth()
     pb.create_repo()
     
 if __name__ == "__main__":
