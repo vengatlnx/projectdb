@@ -1,0 +1,4 @@
+name : Mbed-Ping-Pong
+description : Ping-Pong game for Mbed platforms
+auto-init : true
+gitignore_template : C++
