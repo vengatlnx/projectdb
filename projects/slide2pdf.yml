@@ -1,0 +1,5 @@
+name : slide2pdf
+description : A command-line tool to convert html slide to pdf
+auto-init : true
+gitignore_template : Python
+license_template : mit
