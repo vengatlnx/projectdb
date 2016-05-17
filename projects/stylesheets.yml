@@ -1,0 +1,4 @@
+name : stylesheets
+description : This repository contains asciidoc presentation stylesheets
+auto-init : true
+gitignore_template : None
