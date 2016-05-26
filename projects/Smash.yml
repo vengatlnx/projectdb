@@ -1,0 +1,4 @@
+name : Smash
+description : Wallpaper scraper
+auto-init : true
+gitignore_template : Python
