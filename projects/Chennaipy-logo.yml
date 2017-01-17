@@ -1,0 +1,4 @@
+name : Chennaipy-logo
+description : Source repo for chennaipy logo
+auto-init : true
+gitignore_template : Python
