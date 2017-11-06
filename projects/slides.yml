@@ -1,0 +1,5 @@
+name : Slides
+description : This repo contains my presenation.
+auto-init : true
+gitignore_template : Python
+license_template : mit
